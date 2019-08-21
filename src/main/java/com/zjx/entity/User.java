@@ -1,5 +1,6 @@
 package com.zjx.entity;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
@@ -8,7 +9,7 @@ import java.util.Objects;
  * @Date 2019/8/20 17:07
  * @Version V1.0
  **/
-public class User {
+public class User implements Serializable {
 
     private Integer id;
     private String uesrname;
@@ -17,8 +18,7 @@ public class User {
     public User() {
     }
 
-    public User(Integer id, String uesrname, String password) {
-        this.id = id;
+    public User(String uesrname, String password) {
         this.uesrname = uesrname;
         this.password = password;
     }

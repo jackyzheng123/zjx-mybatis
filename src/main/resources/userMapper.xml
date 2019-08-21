@@ -2,7 +2,19 @@
 <mapper nameSpace="com.zjx.mapper.UserMapper">
 
     <select id="getById" resultType="com.zjx.entity.User">
-        select * from user where id = ?
+        SELECT * FROM user WHERE id = ?
     </select>
+
+    <insert id="add" parameterType="com.zjx.entity.User">
+        INSERT INTO user(username, password) VALUES(?, ?)
+    </insert>
+
+    <update id="update" parameterType="java.util.Map">
+        UPDATE user SET username = ?, password = ? WHERE id = ?
+    </update>
+
+    <delete id="deleteById" parameterType="java.lang.Integer">
+        DELETE FROM user WHERE id = ?
+    </delete>
 
 </mapper>

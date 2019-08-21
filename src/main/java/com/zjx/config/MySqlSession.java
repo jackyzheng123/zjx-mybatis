@@ -14,12 +14,13 @@ public class MySqlSession {
 
     private MyConfiguration config = new MyConfiguration();
 
-    public <T> T selectOne(String statement, Object parameter) {
-        return executor.query(statement, parameter);
+    public <T> T executeSql(String sqlType, String sql, Object[] args) {
+        return executor.executeSql(sqlType, sql, args);
     }
 
     public <T> T getMapper(Class<T> clazz){
+        MapperBean mapperBean = config.readMapper("userMapper.xml");
         // 动态代理调用
-        return (T) Proxy.newProxyInstance(clazz.getClassLoader(), new Class[]{clazz}, new MyMapperProxy(this, config));
+        return (T) Proxy.newProxyInstance(clazz.getClassLoader(), new Class[]{clazz}, new MyMapperProxy(this, config, mapperBean));
     }
 }

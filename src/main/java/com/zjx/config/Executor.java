@@ -8,5 +8,5 @@ package com.zjx.config;
  **/
 public interface Executor {
 
-    <T> T query(String statement, Object parameter);
+    <T> T executeSql(String sqlType, String sql, Object[] args);
 }

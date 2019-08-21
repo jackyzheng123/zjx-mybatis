@@ -101,7 +101,7 @@ public class MyConfiguration {
     }
 
     /**
-     * 读取mapper.xml文件
+     * 读取userMapper.xml文件
      *
      * @return
      */
@@ -137,12 +137,13 @@ public class MyConfiguration {
                 // 利用反射设置返回类型
                 Object newInstance = null;
                 try {
-                    newInstance = Class.forName(resultType).newInstance();
+                    if (!StringUtils.isEmpty(resultType)) {
+                        newInstance = Class.forName(resultType).newInstance();
+                        function.setResultType(newInstance);
+                    }
                 } catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
                     e.printStackTrace();
                 }
-
-                function.setResultType(newInstance);
 
                 list.add(function);
             }
