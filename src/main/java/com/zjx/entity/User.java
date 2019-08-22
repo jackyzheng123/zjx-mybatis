@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /**
- * @Description
+ * @Description 实体类
  * @Author Carson Cheng
  * @Date 2019/8/20 17:07
  * @Version V1.0
